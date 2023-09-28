@@ -36,10 +36,6 @@ const routes: Routes = [
     loadChildren: () => import('./directorio-carreras/directorio-carreras.module').then( m => m.DirectorioCarrerasPageModule)
   },
   {
-    path: 'inico-sesion',
-    loadChildren: () => import('./inico-sesion/inico-sesion.module').then( m => m.InicoSesionPageModule)
-  },
-  {
     path: 'menu-opciones',
     loadChildren: () => import('./menu-opciones/menu-opciones.module').then( m => m.MenuOpcionesPageModule)
   },
