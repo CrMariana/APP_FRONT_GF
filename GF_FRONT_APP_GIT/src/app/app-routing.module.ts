@@ -12,12 +12,29 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'a-especialidades',
-    loadChildren: () => import('./a-especialidades/a-especialidades.module').then( m => m.AEspecialidadesPageModule)
+    path: 'inicio-sesion',
+    loadChildren: () => import('./inicio-sesion/inicio-sesion.module').then( m => m.InicioSesionPageModule)
   },
+  {
+    path: 'registro-usuario',
+    loadChildren: () => import('./registro-usuario/registro-usuario.module').then( m => m.RegistroUsuarioPageModule)
+  },
+  {
+    path: 'menu-opciones',
+    loadChildren: () => import('./menu-opciones/menu-opciones.module').then( m => m.MenuOpcionesPageModule)
+  },
+  {
+    path: 'recorrido',
+    loadChildren: () => import('./recorrido/recorrido.module').then( m => m.RecorridoPageModule)
+  },
+
   {
     path: 'a-estudios-generales',
     loadChildren: () => import('./a-estudios-generales/a-estudios-generales.module').then( m => m.AEstudiosGeneralesPageModule)
+  },
+  {
+    path: 'a-especialidades',
+    loadChildren: () => import('./a-especialidades/a-especialidades.module').then( m => m.AEspecialidadesPageModule)
   },
   {
     path: 'a-fia-data',
@@ -28,29 +45,22 @@ const routes: Routes = [
     loadChildren: () => import('./a-laboratorios/a-laboratorios.module').then( m => m.ALaboratoriosPageModule)
   },
   {
-    path: 'busquedad-placa',
-    loadChildren: () => import('./busquedad-placa/busquedad-placa.module').then( m => m.BusquedadPlacaPageModule)
-  },
-  {
     path: 'directorio-carreras',
     loadChildren: () => import('./directorio-carreras/directorio-carreras.module').then( m => m.DirectorioCarrerasPageModule)
   },
   {
-    path: 'menu-opciones',
-    loadChildren: () => import('./menu-opciones/menu-opciones.module').then( m => m.MenuOpcionesPageModule)
+    path: 'busquedad-placa',
+    loadChildren: () => import('./busquedad-placa/busquedad-placa.module').then( m => m.BusquedadPlacaPageModule)
   },
   {
-    path: 'recorrido',
-    loadChildren: () => import('./recorrido/recorrido.module').then( m => m.RecorridoPageModule)
+    path: 'directorio-carreras-ambientes/:id',
+    loadChildren: () => import('./directorio-carreras-ambientes/directorio-carreras-ambientes.module').then( m => m.DirectorioCarrerasAmbientesPageModule)
   },
   {
-    path: 'registro-usuario',
-    loadChildren: () => import('./registro-usuario/registro-usuario.module').then( m => m.RegistroUsuarioPageModule)
+    path: 'detalle-ambiente/:id',
+    loadChildren: () => import('./detalle-ambiente/detalle-ambiente.module').then( m => m.DetalleAmbientePageModule)
   },
-  {
-    path: 'inicio-sesion',
-    loadChildren: () => import('./inicio-sesion/inicio-sesion.module').then( m => m.InicioSesionPageModule)
-  },
+
 ];
 
 @NgModule({

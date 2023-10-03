@@ -1,0 +1,13 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>directorio-carreras-ambientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="ion-padding container">
+    <ion-button (click)="buscarAmbiente(ambiente.id)" *ngFor="let ambiente of ambientes" expand="full" class="custom-button" color="light">{{ ambiente.descripcion }}</ion-button>
+  </div>
+
+</ion-content>
