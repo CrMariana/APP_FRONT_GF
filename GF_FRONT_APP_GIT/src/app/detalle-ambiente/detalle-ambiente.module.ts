@@ -8,13 +8,18 @@ import { DetalleAmbientePageRoutingModule } from './detalle-ambiente-routing.mod
 
 import { DetalleAmbientePage } from './detalle-ambiente.page';
 
+import { NavbarComponent } from '../navbar/navbar.component';
+
+
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetalleAmbientePageRoutingModule
+    DetalleAmbientePageRoutingModule,
   ],
-  declarations: [DetalleAmbientePage]
+  declarations: [DetalleAmbientePage,NavbarComponent]
 })
 export class DetalleAmbientePageModule {}

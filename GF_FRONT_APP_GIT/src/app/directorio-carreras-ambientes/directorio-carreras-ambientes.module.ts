@@ -8,12 +8,13 @@ import { DirectorioCarrerasAmbientesPageRoutingModule } from './directorio-carre
 
 import { DirectorioCarrerasAmbientesPage } from './directorio-carreras-ambientes.page';
 
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DirectorioCarrerasAmbientesPageRoutingModule
+    DirectorioCarrerasAmbientesPageRoutingModule,
   ],
   declarations: [DirectorioCarrerasAmbientesPage]
 })

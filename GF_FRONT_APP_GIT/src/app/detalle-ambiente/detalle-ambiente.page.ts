@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Ambiente } from '../model/Ambiente';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MasterServiceService } from '../master.service.service';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-detalle-ambiente',
@@ -13,7 +15,8 @@ export class DetalleAmbientePage implements OnInit {
   ambiente: Ambiente=new Ambiente;
   constructor(private route: ActivatedRoute,
     private service: MasterServiceService,
-    private router: Router) { }
+    private router: Router) {
+    }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: any) => {
@@ -27,6 +30,7 @@ export class DetalleAmbientePage implements OnInit {
       )
       console.log(parametro);
     });
+
   }
 
 }

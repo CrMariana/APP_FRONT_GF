@@ -1,14 +1,26 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>detalle-ambiente</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-navbar></app-navbar>
 
 <ion-content [fullscreen]="true">
-
-  <label>{{ambiente.descripcion}}</label>
-  <img src="" alt="">
-  <h3>Ubicacion: </h3>
-  <label for=""></label>
+  <h1 >{{ambiente.descripcion}}</h1>
+  <img src="{{ambiente.foto}}">
+  <table>
+    <h3>Ubicacion: </h3>
+    <tr>
+      <td>Edificio: </td>
+      <td>{{ambiente.pabellon}}</td>
+    </tr>
+    <tr>
+      <td>piso: </td>
+      <td>{{ambiente.piso}}</td>
+    </tr>
+    <tr>
+      <td>Contacto: </td>
+      <td>{{ambiente.contacto}}</td>
+    </tr>
+    <tr>
+      <td>Horario de Atencion: </td>
+    </tr>
+    <tr><td>{{ambiente.horario}}</td></tr>
+  </table>
 
 </ion-content>
