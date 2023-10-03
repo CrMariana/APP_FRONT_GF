@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+
+<ion-content [fullscreen]="true">
+  <h1 >{{ambiente.descripcion}}</h1>
+  <img src="{{ambiente.foto}}">
+  <table>
+    <h3>Ubicacion: </h3>
+    <tr>
+      <td>Edificio: </td>
+      <td>{{ambiente.pabellon}}</td>
+    </tr>
+    <tr>
+      <td>piso: </td>
+      <td>{{ambiente.piso}}</td>
+    </tr>
+    <tr>
+      <td>Contacto: </td>
+      <td>{{ambiente.contacto}}</td>
+    </tr>
+    <tr>
+      <td>Horario de Atencion: </td>
+    </tr>
+    <tr><td>{{ambiente.horario}}</td></tr>
+  </table>
+
+</ion-content>
