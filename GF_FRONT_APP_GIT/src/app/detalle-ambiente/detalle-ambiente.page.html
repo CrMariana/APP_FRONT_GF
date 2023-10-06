@@ -1,13 +1,21 @@
 <app-navbar></app-navbar>
 
 <ion-content [fullscreen]="true">
-  <h1 >{{ambiente.descripcion}}</h1>
-  <img src="{{ambiente.foto}}">
+  <h1 class="ion-text-center">{{ambiente.descripcion}}</h1>
+
+  <div class="imagen-container" >
+    <img src="{{ambiente.foto}}" >
+  </div>
+
   <table>
     <h3>Ubicacion: </h3>
     <tr>
       <td>Edificio: </td>
-      <td>{{ambiente.pabellon}}</td>
+      <td>{{ambiente.pabellon?.descripcion}}</td>
+    </tr>
+    <tr>
+      <td>Area: </td>
+      <td>{{ambiente.area?.descripcion}}</td>
     </tr>
     <tr>
       <td>piso: </td>
@@ -16,6 +24,10 @@
     <tr>
       <td>Contacto: </td>
       <td>{{ambiente.contacto}}</td>
+    </tr>
+    <tr>
+      <td>Referencia: </td>
+      <td>{{ambiente.referencia}}</td>
     </tr>
     <tr>
       <td>Horario de Atencion: </td>
