@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'; // Importa el servicio Router
 import { AlertController } from '@ionic/angular';
+import { Visitante } from '../model/Visitante';
+import { MasterServiceService } from '../master.service.service';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -8,30 +10,63 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./inicio-sesion.page.scss'],
 })
 export class InicioSesionPage implements OnInit {
-  dni: string = '';
-  password: string = '';
-  camposVacios: boolean = false; // Inicializa la variable camposVacios como false
+  visitante?: Visitante;
+  password: string='password';
+  c: number=0;
+  alerta:boolean=false;
+  mostrarExistencia:boolean=false;
+  ver=false;
+  noVer=true;
 
   constructor(
     private router: Router, // Inyecta el servicio Router
-    private alertController: AlertController
+    private service: MasterServiceService
   ) {}
 
-  ngOnInit() {}
-
-  async validarCampos() {
-    if (!this.dni || !this.password) {
-      const alert = await this.alertController.create({
-        header: 'Campos Vacíos',
-        message: 'Por favor, llena todos los campos.',
-        buttons: ['OK'],
-      });
-  
-      await alert.present();
-    } else {
-      // Si los campos están llenos, redirige al usuario a la página "menu-opciones"
-      this.router.navigate(['/menu-opciones']);
-    }
+  ngOnInit(){
+    this.visitante=new Visitante();
   }
-  
+
+  mostrar(){
+      if(this.c%2===0){
+        this.password='text';
+        this.ver=true;
+        this.noVer=false;
+
+
+      }else{
+        this.password='password';
+        this.ver=false;
+        this.noVer=true;
+      }
+      this.c++;
+  }
+
+  ingresar(){
+    if(!this.visitante?.email?.trim() || !this.visitante?.password?.trim()){
+      this.alerta=true;
+      return;
+    }else{
+      this.alerta=false;
+      this.service.ingresar(this.visitante).subscribe(
+        (res:any)=>{
+          if(res.Error==null){
+            this.service.setToken(res.IdToken);
+            this.router.navigate(['/menu-opciones']);
+          }else{
+            this.mostrarExistencia=true;
+            return;
+          }
+        }
+      );
+    }
+
+  }
+
+  registrarRoute(){
+    this.router.navigate(['/registro-usuario']).then(() => {
+      window.location.reload();
+    });
+  }
+
 }
