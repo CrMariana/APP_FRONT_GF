@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { MasterServiceService } from '../master.service.service';
 
 @Component({
   selector: 'app-menu-opciones',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuOpcionesPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private service: MasterServiceService
+  ) { }
 
   ngOnInit() {
+  }
+
+  cerrarSesion(){
+    this.service.deleteToken();
+    this.router.navigate(['/inicio-sesion']).then(() => {
+      window.location.reload();
+    });
   }
 
 }

@@ -1,4 +1,4 @@
 export class Area{
   id?: number;
-    descripcion?: string;
+  descripcion?: string;
 }
