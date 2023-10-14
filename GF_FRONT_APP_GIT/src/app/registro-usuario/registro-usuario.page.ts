@@ -58,7 +58,7 @@ export class RegistroUsuarioPage {
       this.alertaOcupacion=!this.visitante?.ocupacion?.trim();
     }else{
       this.alertaDni=false;
-      this.alertaDni=false;
+      this.alertaNombres=false;
       this.alertaApePat=false;
       this.alertaApeMat=false;
       this.alertaEmail=false;
