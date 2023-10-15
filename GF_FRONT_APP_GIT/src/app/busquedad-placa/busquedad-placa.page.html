@@ -13,19 +13,15 @@
 
 
   <div class="page-header"></div>
-  <h3>Recomendaciones, por favor ingresar el año de la promoción. <br>Por ejemplo: 2015</h3>
+  <h5>Recomendaciones, por favor ingresar el año de la promoción. <br>Por ejemplo: 2015-02</h5>
   <div class="ion-padding container">
-
-      <ion-item class="custom-item">
-        <h4 class="red-bold">Busca tu promoción</h4>
-        <ion-label position="floating">Año</ion-label>
-        <ion-input type="number" [(ngModel)]="yearInput"></ion-input>
-        <ion-icon name="" slot="end"></ion-icon>
-      </ion-item>
-    
-
+    <h4 class="red-bold">Busca tu promoción</h4>
+    <br>
+    <ion-item>
+      <ion-input [type]="'text'" [(ngModel)]="anio" label="Año" [color]="'danger'" labelPlacement="floating" placeholder="Ingrese el año de la promocion"></ion-input>
+    </ion-item>
     <br><br>
-    <ion-button expand="block" class="main-button" (click)="buscarPorAnio()" color="danger">BUSCAR </ion-button>
+    <ion-button expand="block" class="main-button" (click)="buscarPlaca()" color="danger">BUSCAR </ion-button>
     <div class=".low-opacity ">
       <h5 class="centered low-opacity">Tener en cuenta que las placas en físico solo se encuentran desde el año 1990
         hasta el 2017*</h5>

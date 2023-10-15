@@ -61,6 +61,10 @@ const routes: Routes = [
     path: 'detalle-ambiente/:id',
     loadChildren: () => import('./detalle-ambiente/detalle-ambiente.module').then( m => m.DetalleAmbientePageModule),canActivate:[AuthGuard]
   },
+  {
+    path: 'placa-graduados/:placa',
+    loadChildren: () => import('./placa-graduados/placa-graduados.module').then( m => m.PlacaGraduadosPageModule),canActivate:[AuthGuard]
+  },
 
 ];
 

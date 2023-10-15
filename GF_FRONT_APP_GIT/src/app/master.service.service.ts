@@ -4,6 +4,8 @@ import { Area } from './model/Area';
 import { Ambiente } from './model/Ambiente';
 import { Visitante } from './model/Visitante';
 import { Storage } from '@ionic/storage-angular';
+import { Placa } from './model/Placa';
+import { Graduado } from './model/Graduado';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,8 @@ export class MasterServiceService {
   rutaGlobalAmbiente = 'https://ah0hguyfib.execute-api.us-east-2.amazonaws.com/proMobile/ambiente/';
   rutaGlobalArea = 'https://ah0hguyfib.execute-api.us-east-2.amazonaws.com/proMobile/area/';
   rutaGlobalAturizador='https://ah0hguyfib.execute-api.us-east-2.amazonaws.com/proMobile/autorizacion/';
+  rutaGlobalGradudo='https://ah0hguyfib.execute-api.us-east-2.amazonaws.com/proMobile/graduado/';
+  rutaGlobalPlaca='https://ah0hguyfib.execute-api.us-east-2.amazonaws.com/proMobile/placa/';
 
 
   constructor(private http: HttpClient,private storage: Storage) { }
@@ -56,4 +60,13 @@ export class MasterServiceService {
   deleteToken(){
     localStorage.removeItem('token');
   }
+
+  buscarPlaca(placa :Placa){
+    return this.http.post<Placa>(this.rutaGlobalPlaca + "buscar",placa);
+  }
+
+  buscarGraduadosPlaca(placa:Placa){
+    return this.http.post<Graduado[]>(this.rutaGlobalGradudo + "buscar-graduados-placa",placa);
+  }
+
 }
