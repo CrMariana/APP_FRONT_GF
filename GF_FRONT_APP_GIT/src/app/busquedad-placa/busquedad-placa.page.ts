@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { Placa } from '../model/Placa';
+import { MasterServiceService } from '../master.service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-busquedad-placa',
@@ -7,42 +10,59 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./busquedad-placa.page.scss'],
 })
 export class BusquedadPlacaPage implements OnInit {
-  yearInput: number | null = null; // Variable para almacenar el año ingresado
 
-  constructor(private alertController: AlertController) {}
+  anio?: string;
+  alertaExistencia: boolean=false;
+  alertaFormato: boolean=false;
 
-  ngOnInit() {}
+  constructor(private alertController: AlertController, private service:MasterServiceService,private router: Router) {}
 
-  async buscarPorAnio() {
-    if (this.yearInput !== null) {
-      if (this.yearInput >= 1999 && this.yearInput <= 2017) {
-        // El año está dentro del rango permitido, muestra una alerta de búsqueda exitosa
-        const alert = await this.alertController.create({
-          header: 'Búsqueda exitosa',
-          message: `Búsqueda para el año ${this.yearInput}`,
-          buttons: ['OK']
-        });
+  ngOnInit(){
 
-        await alert.present();
-      } else {
-        // El año está fuera del rango permitido, muestra una alerta de error de rango
+  }
+
+  async buscarPlaca(){
+    if(this.anio?.trim()){
+      let anio:number=parseInt(this.anio!.substring(0,4));
+      let semestre:number=parseInt(this.anio!.substring(5,7));
+      const formato = /^\d{4}-\d{2}$/;
+
+      if(anio>=1990 && anio<=2017 && semestre>0 && semestre<3 && formato.test(this.anio.trim())){
+        let placa :Placa=new Placa();
+        placa.id=this.anio;
+        this.service.buscarPlaca(placa).subscribe(
+          res =>{
+            this.verificarExistencia(res);
+          }
+        );
+      }else{
         const alert = await this.alertController.create({
           header: 'Error',
-          message: 'El año debe estar entre 1999 y 2017',
+          message: 'Formato incorrecto',
           buttons: ['OK']
         });
-
         await alert.present();
       }
-    } else {
-      // El año ingresado es nulo o no es un número, muestra una alerta de error de formato
+    }else{
       const alert = await this.alertController.create({
         header: 'Error',
-        message: 'Ingrese un año válido (formato: AAAA)',
+        message: 'El campo es obligatorio',
         buttons: ['OK']
       });
-
       await alert.present();
+    }
+  }
+
+  async verificarExistencia(placa: Placa){
+    if(!placa){
+      const alert = await this.alertController.create({
+        header: 'Error',
+        message: 'Placa en construccion :(',
+        buttons: ['OK']
+      });
+      await alert.present();
+    }else{
+      this.router.navigate(['/placa-graduados',placa.id]);
     }
   }
 }

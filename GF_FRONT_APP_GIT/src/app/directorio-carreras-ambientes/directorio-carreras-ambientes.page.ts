@@ -15,7 +15,7 @@ export class DirectorioCarrerasAmbientesPage implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private service: MasterServiceService,
-    private router: Router,) { }
+    private router: Router) { }
 
   ngOnInit() {
 
